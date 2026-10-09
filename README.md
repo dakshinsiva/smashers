@@ -9,10 +9,11 @@ how they moved, who controlled the T, every rally with its server and winner, th
 a coach-facing report and an annotated video. No wearables, no multi-camera rig, no ball tracking, and
 no manual tagging beyond labelling a few seconds of each player.
 
-![Tracked frame: pose detection, court-projected feet, mini-map and scoreboard](docs/images/tracked_frame.jpg)
+![Smashers: squash match analysis from one fixed camera](docs/images/cover.png)
 
-*Every frame: both players detected, their foot positions projected onto the court (the numbers are metres
-across and from the front wall), a top-down mini-map with recent movement, and the reconstructed score.*
+*Top right, a tracked frame: both players detected, their foot positions projected onto the court (the
+numbers are metres across and from the front wall), a top-down mini-map with recent movement, and the
+reconstructed score in the annotated video. Below it, where each player stood during rallies.*
 
 ## Why this is hard
 
