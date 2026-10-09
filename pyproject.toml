@@ -1,0 +1,35 @@
+[project]
+name = "smashers"
+version = "0.1.0"
+description = "Squash match analysis from a single fixed camera: court calibration, player tracking, rally and score reconstruction, coach-facing reports."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Dakshin Raj Siva" }]
+dependencies = [
+  "ultralytics>=8.3",
+  "torch>=2.2",
+  "torchvision>=0.17",
+  "opencv-python>=4.8",
+  "numpy<2",
+  "scipy",
+  "pandas",
+  "pyarrow",
+  "matplotlib",
+  "pyyaml",
+  "scikit-learn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "pypdf", "pypdfium2"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B905", "B007"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

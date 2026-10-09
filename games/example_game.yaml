@@ -1,0 +1,23 @@
+# Template for a new game. Copy, fill in, and run:  python run_all.py games/my_game.yaml
+court: courts/court2_smashers.yaml      # which court/camera profile to use (see courts/)
+video: "videos/my_game.mp4"             # path to the footage (relative to the repo root or absolute)
+output_dir: "output_my_game"            # every stage caches its outputs here
+game_date: "1 January 2026"
+report_title: "My Game Report"
+
+t_start: 0.0                            # seconds of footage to analyse (skip camera setup / pickup)
+t_end: 600.0
+
+players:
+  p1:
+    label: "Player A"
+    kit_desc: "white shirt"
+    handedness: "right"
+  p2:
+    label: "Player B"
+    kit_desc: "blue shirt"
+    handedness: "right"
+user_player: null                       # "p1" / "p2" for a single-coachee report, null for both
+
+scoring: "PAR15"
+known_final_score: null

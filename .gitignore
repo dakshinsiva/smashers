@@ -1,0 +1,23 @@
+# analysis outputs (large, and they contain footage of real people)
+output*/
+videos/
+*.mp4
+*.parquet
+*.npy
+*.pdf
+
+# model weights (downloaded by ultralytics on first run)
+*.pt
+
+# game configs name real players and local video paths; keep the template only
+games/*.yaml
+!games/example_game.yaml
+
+# environments and tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.claude/
+.DS_Store

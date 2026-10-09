@@ -1,0 +1,18 @@
+# Court profile: "Court 1: Smashers" (name assumed; rename if the club calls it something else)
+# Phone on the floor behind the glass back wall, ultra-wide lens, 1024x576 @ 30 fps.
+name: "Court 1: Smashers"
+camera_profile: "floor_level"
+
+# Detection
+frame_stride: 3          # 30 fps source: every third frame (~10 fps)
+imgsz: 640
+conf: 0.25
+model: "yolo11n-pose.pt"
+
+# Calibration (floor-level profile): the three red lines on the front wall give the pixel scale and
+# the floor row; the side-wall floor junctions and the far end of the red half-court line give the T.
+# Seeds are approximate image pixels; the stage refines them.
+calibration_seed:
+  front_left:  [400, 410]
+  front_right: [670, 410]
+  t_point:     [540, 430]

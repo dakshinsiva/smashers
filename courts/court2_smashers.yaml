@@ -1,0 +1,35 @@
+# Court profile: "Court 2: Smashers"
+# Fixed CCTV camera mounted high behind the glass back wall, wide lens with visible barrel distortion,
+# 576x640 @ 12 fps. Everything in this file describes the camera and the court, not a particular game;
+# a game file references it with `court: courts/court2_smashers.yaml`.
+name: "Court 2: Smashers"
+camera_profile: "elevated"
+
+# Detection
+frame_stride: 1          # the source is 12 fps: process every frame
+imgsz: 640
+conf: 0.25
+model: "yolo11n-pose.pt"
+
+# Pixel polygon kept for detection. People outside it (the neighbouring court visible on the right,
+# spectators and bags on the landing below the back wall) are blanked out before the pose model runs.
+roi_px: [[10, 120], [465, 120], [465, 525], [10, 525]]
+
+# Calibration (elevated profile). The painted floor lines are traced on the background frame inside
+# these pixel windows and a floor homography is fitted jointly with a one-parameter radial lens model.
+#   lines:  scan "x" = near-horizontal line, best row in `window` for each column in `range`
+#           scan "y" = near-vertical line, best column in `window` for each row in `range`
+#           skip = pixel ranges to ignore (door hardware, glass mullions)
+#   points: extra landmarks with a weight (the T is reliable; the front corners are read by eye)
+calibration_seed:
+  lines:
+    half_court:  {scan: "y", range: [344, 500], window: [205, 232], court: ["x", 3.2]}
+    short:       {scan: "x", range: [130, 372], window: [332, 356], skip: [[172, 202], [212, 222], [254, 266]], court: ["y", 5.44]}
+    left_inner:  {scan: "y", range: [348, 378], window: [120, 150], court: ["x", 1.6]}
+    right_inner: {scan: "y", range: [350, 396], window: [284, 316], court: ["x", 4.8]}
+    left_back:   {scan: "x", range: [62, 128],  window: [360, 386], court: ["y", 7.04]}
+    right_back:  {scan: "x", range: [308, 370], window: [386, 404], court: ["y", 7.04]}
+  points:
+    t_point:     {px: [217, 340], m: [3.2, 5.44], weight: 3.0}
+    front_left:  {px: [127, 249], m: [0.0, 0.0],  weight: 1.0}
+    front_right: {px: [314, 258], m: [6.4, 0.0],  weight: 1.0}
