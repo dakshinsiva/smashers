@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install (lightweight: tests do not need the detector)
+      - name: "Install (lightweight: tests do not need the detector)"
         run: pip install "numpy<2" scipy pandas pyyaml opencv-python-headless scikit-learn pytest ruff
       - name: Lint
         run: ruff check squash run_all.py tests
